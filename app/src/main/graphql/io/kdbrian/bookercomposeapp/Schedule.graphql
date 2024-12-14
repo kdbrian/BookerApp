@@ -1,0 +1,18 @@
+fragment ScheduleInfo on Schedule{
+    id
+    startTime
+    endTime
+}
+
+
+query GetSchedules{
+    getSchedules {
+        ...ScheduleInfo
+    }
+}
+
+query GetCompanySchedules($companyId:ID!){
+    getCompanySchedules(companyId: $companyId){
+        ...ScheduleInfo
+    }
+}

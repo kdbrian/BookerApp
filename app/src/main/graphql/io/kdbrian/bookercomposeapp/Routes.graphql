@@ -1,0 +1,26 @@
+fragment RouteInfo on Route{
+    from
+    to
+    schedule {
+        startTime
+        endTime
+        company {
+            name
+        }
+    }
+}
+
+query GetAllRoutes{
+    getRoutes {
+        ...RouteInfo
+    }
+}
+
+
+query GetScheduleRoutes($scheduleId : ID!){
+    getRouteByScheduleId(scheduleId: $scheduleId){
+        ...RouteInfo
+    }
+}
+
+

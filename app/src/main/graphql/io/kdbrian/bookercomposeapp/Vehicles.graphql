@@ -1,0 +1,68 @@
+fragment VehicleInfo on Vehicle{
+    id
+    price
+    leavingTime
+    seatCount
+    seatOccupied
+    estimatedTimeOfTravel
+    features
+    route {
+        to
+        from
+        schedule {
+            company {
+                id
+            }
+        }
+    }
+}
+
+query GetAllVehicles{
+    getVehicles {
+        ...VehicleInfo
+    }
+}
+
+query GetVehiclesByRouteId($routeId : ID!){
+    getVehicleByRoute(routeID: $routeId) {
+        ...VehicleInfo
+    }
+}
+
+query GetVehiclesByRouteFrom($routeFrom : String!){
+    getVehicleByRouteFrom(from: $routeFrom) {
+        ...VehicleInfo
+    }
+}
+
+query GetVehiclesByRouteTo($routeTo : String!){
+    getVehicleByRouteTo(to: $routeTo) {
+        ...VehicleInfo
+    }
+}
+
+query GetVehiclesByRouteFromAndTo($routeFrom : String!,$routeTo : String!){
+    getVehicleByRouteFromAndTo(from: $routeFrom, to: $routeTo) {
+        ...VehicleInfo
+    }
+}
+
+query GetVehiclesByPrice($price : Float!){
+    getVehicleByPrice(price: $price) {
+        ...VehicleInfo
+    }
+}
+
+query GetVehiclesBySeats($seats : Int!){
+    getVehicleBySeatCount(seatCount: $seats) {
+        ...VehicleInfo
+    }
+}
+
+query GetVehiclesBySeatRange($seats : [Int!]!){
+    getVehicleBySeatRange(seatRange: $seats) {
+        ...VehicleInfo
+    }
+}
+
+

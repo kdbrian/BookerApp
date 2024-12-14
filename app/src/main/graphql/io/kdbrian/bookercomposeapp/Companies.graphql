@@ -1,0 +1,36 @@
+fragment CompanyInfo on Company{
+    id
+    name
+    location
+}
+
+
+query GetCompanies{
+    getCompanies {
+       ...CompanyInfo
+    }
+}
+
+query GetCompanyById($id:ID!){
+    getCompanyById(companyID: $id){
+        ...CompanyInfo
+    }
+}
+
+query GetCompanyByName($name : String!){
+    getCompanyByName(name: $name){
+        ...CompanyInfo
+    }
+}
+
+query SearchForCompaniesWithName($name : String!){
+    getCompaniesByName(name: $name){
+        ...CompanyInfo
+    }
+}
+
+query SearchForCompaniesWithLocation($location : String!){
+    getCompaniesByLocation(location: $location){
+        ...CompanyInfo
+    }
+}
